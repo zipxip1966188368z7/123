@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex 布局</title>
+    <meta name="description" content="Re01 编程课的Flex布局演示。" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <style>
+      body {
+        margin: 0;
+        /* vh 是view height 既视窗高度的意思，100就是100%占满窗口高度 */
+        height: 100vh;
+        background-color: #eee;
+      }
+      /* * {
+        border: 1px solid #333;
+      } */
+      .flex {
+        display: flex;
+      }
+      /* 占满比例 */
+      .flex1 {
+        flex: 1;
+      }
+      /* 竖向 */
+      .column {
+        flex-direction: column;
+      }
+      /* 阴影 */
+      .yinYing {
+        box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px,
+          rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px;
+      }
+      /* 白色背景 */
+      .baiSe {
+        background-color: #999;
+      }
+      /* 上下左右外边距 */
+      .mg8 {
+        margin: 2px;
+      }
+      /* 右外边距 */
+      .mgr8 {
+        margin-right: 2px;
+      }
+      /* 上外边距 */
+      .mgt8 {
+        margin-top: 2px;
+      }
+      /* 四个小盒子 */
+      .shuJu {
+        height: 100px;
+      }
+      /* 中间的大盒子 */
+      .lieBiaoXiang {
+        height: 270px;
+      }
+      /* 导航条 */
+      .daoHang {
+        padding: 10px 20px;
+        border-bottom: 1px solid rgb(201, 201, 201);
+        font-size: 16px;
+        color: #111;
+      }
+      .neiRong::-webkit-scrollbar {
+        display: none; /* Chrome Safari */
+      }
+
+      /* 当屏幕宽度小于600px时要改变的css */
+      @media (max-width: 600px) {
+        /* 小屏幕上取消侧边栏，后面学js时会教怎么弹出 */
+        .ceBian {
+          display: none;
+        }
+        /* 内容栏和数据栏flex方向改为竖向 */
+        .neiRong {
+          flex-direction: column;
+        }
+        .shuJuQu {
+          flex-direction: column;
+        }
+        /* 右区加左外边距 */
+        .youQu {
+          margin-left: 8px;
+        }
+        /* 数据块外边距，大小改为自动宽高 */
+        .shuJu {
+          margin: 0 0 8px;
+          flex: auto;
+        }
+      }
+    </style>
+  </head>
+  <body class="flex">
+    <!-- 侧边栏 -->
+    <div
+      style="width: 220px; z-index: 3"
+      class="ceBian flex column baiSe yinYing"
+    >
+      <!-- 侧边头像栏 -->
+      <div
+        style="
+          padding: 30px;
+          align-items: center;
+          justify-content: center;
+          border-bottom: 1px solid #111;
+        "
+        class="flex"
+      >
+		  <div style="margin-left: 0px"><h3>雨世界</h3></div>
+      </div>
+      <!-- 导航栏 -->
+      <div class="flex1">
+        <div class="daoHang">A7</div>
+        <div class="daoHang">B7</div>
+        <div class="daoHang">C7</div>
+        <div class="daoHang">D7</div>
+        <div class="daoHang">E7</div>
+      </div>
+    </div>
+    <!-- 主区域 -->
+    <div class="flex flex1 column">
+      <!-- 头部栏 -->
+      <div style="height: 61px; z-index: 2" class="baiSe yinYing"></div>
+      <!-- 内容区 -->
+      <div class="flex flex1 neiRong" style="overflow: auto">
+        <!-- 左区 -->
+        <div style="flex: 3" class="flex column mg8">
+          <!-- 数据区 -->
+          <div class="flex shuJuQu">
+          </div>
+          <!-- 列表区，列表数据可以无限增加 -->
+          <div class="flex column">
+            <!-- 列表项 -->
+            <div class="lieBiaoXiang mgt8 baiSe yinYing">
+<img src="https://steamuserimages-a.akamaihd.net/ugc/2041871374914862917/2A07836862025F8680E71D79FC17E359F2E5BB68/?imw=268&imh
+=151&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="Smiley face" width="700" height="270">
+</div>
+            <div class="lieBiaoXiang mgt8 baiSe yinYing">
+				<p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3013739512">英文名：Pearlcat</a>:</p>
+				<p><a href="https://github.com/forthbridge/pearlcat/releases">中文名：真珠猫</a></p>
+				
+				<p>来自遥远国度的神秘学者，拥有非凡的驾驭珍珠的能力！
+
+有了这些知识，面对危险并保护你的猫崽 - 一切都在你探索世界及其奥秘的旅程中...
+
+特点：
+同时携带和储存许多珍珠
+
+与卵石和月亮的独特互动！
+Pebbles 看到了珍珠猫的用处，现在也会读取你的珍珠
+
+新的过场动画
+
++ 您存储的每颗珍珠都有独特的能力，具体取决于颜色！
+
+Pearlcat 不需要 MSC，但强烈建议使用
+
+鸣谢：
+Geahgeah - 艺术与设计
+Sidera - 特效和对话
+Noir - 耳朵和围巾代码
+
+游戏测试人员：
+TurtleMan27
+Balagaga
+Elliot
+Efi
+WillowWisp
+Lolight2
+mayhemmm
+
+</p></div>
+			  <div class="lieBiaoXiang mgt8 baiSe yinYing">
+			 <img src="https://steamuserimages-a.akamaihd.net/ugc/2015963092393389680/00E3591EA9E7EBC
+511A9E2ADBF5A4558429E6860/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="Smiley face" width="700" height="270"> </div>
+            <div class="lieBiaoXiang mgt8 baiSe yinYing">
+				<p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2947594650&searchtext=TheD">英文名：The DroneMaster</a></p>
+				<p>中文名：无人机猫
+			  <p>一只拥有激光无人机的机械猫，你需要做的就是对任何拦路虎大开杀戒。
+
+特性：
+你可以承受三次致命伤害（掉出房间不算在内），脸旁的金属鳍会指示剩余的生命值。
+你需要吃更多食物来进行雨眠。在你吃饱之前，蜈蚣的电击都可以给你充电。
+无人机的数量会随着业力等级提升而增加，按下C来打开无人机控制HUD。
+同时，抓着你的无人机可以更快地移动。
+现在你也可以打开去往外缘前往大都会的业力门！
+更多配置请浏览拓展的mod配置菜单
+添加了一个全新的结局。
+
+已知问题：目前和Friends to Friends冲突
+如果你没法抓住你的无人机，那可能是因为和Everyone Can Maul冲突
+
+
+</p></div>
+            <div class="lieBiaoXiang mgt8 baiSe yinYing">
+			 <img src="https://steamuserimages-a.akamaihd.net/ugc/2063254418287809675/98402474AFB19922948EF6E377603BCBCEB572B4/?imw
+=268&imh=151&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="Smiley face" width="700" height="270"> </div>
+            <div class="lieBiaoXiang mgt8 baiSe yinYing">
+				<p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2937471209&searchtext=Solace+-+BETA">英文名：Solace - BETA</a></p>
+			 <p>中文名：朋友猫</p> 
+			  <p>这是测试版。自定义活动内容尚未完全添加，生物正在开发中。
+
+由于此 mod 的范围扩大，The Friend mod 已重命名为 Solace。对于此次重命名可能造成的任何混乱，我深表歉意！
+
+作为两只新的自定义蛞蝓猫，朋友和偷猎者，面对冬季风暴！位于 Rivulet 和 Saint 之间。这两个活动同时发生。已经为这个模组创建了一个混音配置，有几个选项可以改变你喜欢的游戏方式，还有一些其他的东西。
+
+朋友是这个模组添加的第一个新角色。这种笨重的蛞蝓猫四肢发达，在爬行、攀爬、跳跃甚至投掷方面表现出色。然而，他们走路很笨拙，所以不要站起来！它们从普通食物中获得的营养与其他任何蛞蝓猫一样多，但也可以吃掉普通食物四分之一的生物。多亏了肥厚的尾巴，在资源匮乏时，它们比大多数动物都能更好地储存食物。这个软弱的生存主义者充分利用他们拥有的东西，并且可以伤害。给弱者做饭不是他们喜欢的饮食，但在冰冻的荒原上，很难挑剔。特别是当他们的蜥蜴饿了的时候。
+
+偷猎者是这个模组的第二个新角色。他们的对手比这只幼崽的蛞蝓猫更强大、更重，所以他们必须利用自己的智慧而不是蛮力来度过难关。他们必须制作热源来保持他们没有毛的身体温暖，并且可以用他们可以在周围找到的许多东西来制造武器。他们的头盔有助于保护他们免受长矛和非致命抓握的伤害，但不要骄傲自大，因为他们在措手不及时仍然像任何蛞蝓猫一样脆弱。偷猎者只有三个食物点可以跟踪，但他们缺乏朋友扩大的饮食，饥荒仍在如火如荼地进行。他们最有用的手艺之一是火矛，它对敌人造成 1.2 点伤害并让偷猎者稍微暖和一些。
+。
+
+</p></div>
+			 <div class="lieBiaoXiang mgt8 baiSe yinYing">
+			  <img src="https://steamuserimages-a.akamaihd.net/ugc/2022716495931782872/21E461C22B32CC391E5E5FE5FC759B41D9F1CC17
+/?imw=268&imh=151&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="Smiley face" width="700" height="270"></div> 
+			  <div class="lieBiaoXiang mgt8 baiSe yinYing">
+			  <p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2939738770&searchtext=The+Beecat">英文名：The Beecat</a></p>
+				<p><a href="https://github.com/MatheusVigaro/Beecat/releases/">中文名：蜂猫</a></p>
+			  <p>在这个贫瘠的世界展开你的翅膀！免责声明！这是一个非常早期的原型，有些东西很容易更改或未完成。该角色的战役正在开发中，尚未实施，世界和生物生成与猎手的相同。
+Beecat 是一种敏捷的生物，能够在世界上快速移动，并且能够短距离飞行（或直到它们感到疲倦），这种增强的敏捷性和机动性是有代价的，不过，Beecat 使用了一些营养素他们吃东西来为他们强大的肌肉和翅膀提供能量，只允许他们从食物中获得的一半营养被储存起来用于冬眠。然而，它们弥补了这一点，能够在长而粗的尾巴中储存营养，从而为下一个周期储存大量食物。
+自定义功能！翅膀！：在半空中按住跳跃可张开翅膀并滑行近距离。空中轰炸：长矛、石块、炸弹等在飞行时上下投掷攻击你的敌人。快速新陈代谢：以更快的速度穿越世界，但是您只能从所吃的食物中获得一半的营养。尾巴储备：将营养物质储存在尾巴中，以便为下一个周期保存大量食物。Tail Chonk：一条生长中的尾巴，当你储存更多食物时它会变大，当有 8 个或更多食物点时，你可以用肥尾巴跳到敌人身上伤害他们。
+自定义图形：用美丽的翅膀、剥离的尾巴、甜美的触角和柔软的绒毛向世界展示你的战利品！</p></div>
+            <div class="lieBiaoXiang mgt8 baiSe yinYing"><img src="https://steamuserimages-a.akamaihd.net/ugc/2065505207638867961/A61881F34CEA3059A969AD1E28321D9A7D238855
+/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="Smiley face" width="700" height="270"></div>
+			 <div class="lieBiaoXiang mgt8 baiSe yinYing">
+			 <p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2961788239&searchtext=The+Outsider">英文名：The Outsider</a></p>
+				<p>中文名：离群者</p>
+				 <p>离群者是一只过分华丽的蛞蝓猫——或者更确切地说，是蛞蝓猫的远亲。它具备有翅虫类的基因，这使它获得了生物荧光和飞行能力，但也使烟雾果对它致命。
+1. 离群者能飞行。在空中时，按下跳跃键，拍打翅膀。每次起飞后的第一次拍翅不消耗食物点，但随后的每次拍翅将消耗1/4的饱食度。
+2. 离群者能释放闪光。站在地面上时，同时按住拾取键和跳跃键，消耗1点饱食度来释放闪光。
+3. 离群者是一只食素动物。它不能食用任何肉类，但作为补偿，它可以吞下更多种类的植物获得饱食度，比如气泡草、闪光果等。但烟雾果是有毒的，它食用烟雾果会立刻死亡。请不要责怪它，在它的家乡没有任何烟雾果，它和你一样一开始不知道这一点。
+我希望你会发现这些能力很有用……因为它必须努力在一个灰暗阴沉的世界中生存。
+<p/>
+			  </div> 
+			  <div class="lieBiaoXiang mgt8 baiSe yinYing">
+		<img src="https://steamuserimages-a.akamaihd.net/ugc/2020472558407264748/19FAF3B4BFFA891FE4570DD053EF14385F47CDAE/
+?imw=268&imh=151&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="Smiley face" width="700" height="270"></div>
+            <div class="lieBiaoXiang mgt8 baiSe yinYing">
+			 <p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2979222068&searchtext=The+Similar+">英文名：The Similar </a></p>
+				<p>中文名：潜伏者</p> 
+				<p>在自然选择中进化的蛞蝓猫，善于伪装，能够灵活地隐匿在环境中，为了寻求舒适的庇护所而踏上旅途。
+Similar的能力让生存变得更加容易，半植物细胞的构造让它能够在野外进行光合作用，利用拟态尾巴吸引蝙蝠蝇，以及进行伪装等。
+
+【能力】
++光合作用：在野外露天区域停留能够通过光合作用进行缓慢的饱食度回复。
++猎物吸引：蝙蝠蝇会被吸引并主动靠近。
++拟态伪装：趴下或匍匐前进时，会进入隐匿状态，此状态下不容易被捕食者发现。
++业力保护：满饱食度状态下，长按↑+拾取键能够消耗所有饱食度获得一个业力等级保护。
++非常可爱： Similar是一只难以置信般可爱的蛞蝓猫，它适合所有人！
+Similar出生在空岛，体能较弱，目前生活的时间线和环境与Monk相似。
+Mod会在未来持续更新，Similar可能会拥有更多的新机制，剧情和更多的原创内容。
+感谢大家对这个mod的喜欢和支持，欢迎大家的留言与反馈。。
+</p> </div>
+			 <div class="lieBiaoXiang mgt8 baiSe yinYing"><img src="https://steamuserimages-a.akamaihd.net/ugc/2027220729994178464/DE6A421A1924092CDE6114857B1198BE01095236/
+\?imw=268&imh=151&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="Smiley face" width="700" height="270"></div> 
+			  <div class="lieBiaoXiang mgt8 baiSe yinYing">
+				  <p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2941134108&searchtext=sporecat">英文名：sporecat </a></p>
+				<p><a href="https://github.com/metnias/MapleCollection">中文名：孢子猫</a></p>
+				  <p>添加一个名为孢子猫的游玩模式，它是一种谨慎的食虫生物.
+
+孢子猫互动:
+孢子猫喜好捕食节肢动物，依靠食用它们生存.
+按住上和拾取从尾巴上摘下一个孢子果.
+按住下并长压拾取键，引爆你尾巴上所有的孢子.
+要记得，如果消耗过多的孢子果会减少你的饱食度.</p></div>
+            <div class="lieBiaoXiang mgt8 baiSe yinYing">
+			  <img src="https://steamuserimages-a.akamaihd.net/ugc/2044121144221762336/881501E948F0BD1746D5F2DEDA6F2DD3326751D0/
+?imw=268&imh=151&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="Smiley face" width="700" height="270"></div>
+			 <div class="lieBiaoXiang mgt8 baiSe yinYing">
+			  <p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3001275271&searchtext=The+Vinki">英文名：The Vinki </a></p>
+				 <p>中文名：文基</p>控制
+按住拾取键，用肥皂鞋降落在水平梁上，然后在其上进行来回滑动。 当速度足够快时跳跃可以让你进行特技跳跃！
+
+
+您还可以研磨垂直梁。 当你到达顶部时按住跳跃也会导致技巧跳跃。
+
+
+先进的力学
+从水平横梁磨擦中跌落后的特技跳跃（土狼跳跃）会给你带来水平提升！
+
+
+您可以按住跳跃键以从您所在的横梁上掉下来，然后松开以降落在较低的横梁上！
+</div>
+			  <div class="lieBiaoXiang mgt8 baiSe yinYing">
+			  <img src="https://steamuserimages-a.akamaihd.net/ugc/2040739975504329880/0C5E1EED03950AE2ECC32769D7E844E0CA38FFE2/
+?imw=268&imh=151&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="Smiley face" width="700" height="270"></div> 
+			  <div class="lieBiaoXiang mgt8 baiSe yinYing">
+			  <p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2960693310&searchtext=The+Guide">英文名：The Guide</a></p>
+				<p>中文名：鱼猫
+				  <p>将 The Guide 添加到游戏中的模组（有时昵称为 Apple）。这是一个测试版，所以期待错误。
+一场事故使你离家很远。被一群拾荒者收留，你学会了与他们一起生活并逐渐了解他们的生活方式。但是，您发现这个新地方不适合您。
+除了下雨，天空群岛是贫瘠的水域。一个半水生生物在干燥的地方……
+你要做什么？
+这个 mod 是一个正在进行的工作，所以现在还有很多事情是不完整的。
+当前功能：- Arti 世界状态。月亮是不可接近的，拾荒者绝对无处不在
+- 拾荒者对你非常友好（由于游戏的人工智能，可能仍然无法预测）
+- 由于你的外部鳃，肺活量大大增加
+- 一些自定义房间（SI scav 前哨站和避难所，DS 家）
+- [计划在未来更新] 自定义插件（可能需要通过“Get Fancy”UI 手动放置）
+计划的功能：
+-[部分实现]防滑特性 - 导轨上的保护膜在浸入水中时会水合。有了这个，它们的滑道更长，隧道速度更快，并且它们可以从掠食者的嘴里溜走。
+- 'Tail Escape' - 脱水时，向导将能够分离尾巴以快速逃脱，但尾巴需要时间和能量才能再生。蛞蝓猫必须吃饱才能冬眠。
+- 多人插件- [进行中] 灯笼矛物品 - 用于引导你的拾荒者家庭
+- [进行中] 自定义区域：淹没公- 活动/NPC 对话
+</p></div>
+            <div class="lieBiaoXiang mgt8 baiSe yinYing">
+			 <img src="https://steamuserimages-a.akamaihd.net/ugc/2057623431275383073/45F2EFF7E66D11661B1EE8535E35D8E89FC82345
+/?imw=268&imh=151&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="Smiley face" width="700" height="270"></div>
+			 <div class="lieBiaoXiang mgt8 baiSe yinYing">
+			  <p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2960863440&searchtext=The+Incandescent">英文名：The Incandescent</a></p>
+				<p>中文名：冰河猫
+				 <p>像冰河猫一样勇敢地面对一个不断恶化的冰河时代，这是一只圣徒之后的猫，对肆虐的暴风雪有着相当极端的适应能力。我希望这个 slugcat 的战役比基础游戏或 DLC 中的任何战役更具挑战性，同时仍然很有趣。
+当前仅实现了冰河猫本身。然而，我们计划开展一场全面的战役，其中包括对世界的重大改变和多达 6 种新生物，以创造更难的整体体验！
+
+是的，呃，这个模组需要一段时间才能完成。
+
+________________________________________________________ ____
+
+蛞蝓猫特征
+
+优点
+
+更快的运行和更快的幻灯片！
+滚动速度更快，持续时间增加了三倍！
+巨大的后空翻！
+翻滚、滑行、翻转、滑行突袭和鞭打跳跃都会在撞击时造成伤害，但会导致冰河猫失去一些温暖。
+自然发光！
+对寒冷有很强的抵抗力，并且比其他蛞蝓猫更快地升温。
+可以加热其他相邻的生物。
+
+缺点
+
+0.75 倍长矛伤害。
+在水中时失去对寒冷的所有抵抗力。
+离开水后保持湿润，失去耐寒性和发光强度，直到它们变干。你在水中停留的时间越长，你失去的温度就越大，你干透所需的时间也就越长。
+
+竞技场/PvP 特定功能
+
+冰河猫在竞技场中获得了一些奇特的自定义颜色！
+温暖再生减弱，太湿反而会导致你开始失去温暖。
+冰河猫的移动攻击会在使用时消耗一点点热量，即使它们没有击中也是如此。
+与其他玩家相比，移动攻击将造成一半的伤害并消耗比平时更多的热量。不过，还是可以一发的！
+如果太冷，冰河猫会开始失去健康！这样可以让你更容易被杀死，甚至在你太冷的时候直接杀死你！
+我试图让冰河猫不成为竞技场中的 Artificer 2，但我想知道我是否走得太远了。请随时向我提供有关这些更改的反馈！
+</p></div> 
+			  <div class="lieBiaoXiang mgt8 baiSe yinYing"><img src="https://steamuserimages-a.akamaihd.net/ugc/2053130597138084720/CA4C2BAE307E6BDDA34A4065BC0A6566B2A4D6B3
+/?imw=268&imh=151&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" width="700" height="270"></p></div>
+            <div class="lieBiaoXiang mgt8 baiSe yinYing">
+				<p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2947805022&searchtext=The+Escort">英文名：The Escort</a></p>
+				<p>中文名：侍卫猫
+				<p>
+ REMIX MENU 可以调整一些功能并启用可选的花招
+显着改变角色玩法的构建，赋予每个构建独特的能力，使他们变得与众不同
+自定义精灵
+滑动眩晕（滑入生物体内）
+落踢（翻滚/滑行扑向生物）
+翻转突袭（冲锋突袭）
+翻转墙壁跳跃（在墙上时按住向上或向下和方向（朝向墙壁），然后稍后按跳跃）
+无限滚动（加速！）
+双持长矛（和死蜥蜴）
+招架滑行！ （滑动可以招架大部分伤害，包括爆炸物！）
+战斗热潮：通过参与战斗变得更强、更快，将疲劳值保持在阈值以上。 让肾上腺素激增！
+Arc'd Spear（武僧投掷轨迹、幸存者伤害（炒作时伤害更高！）、（较小的）美食家向前推力）
+自定义（愚蠢）SFX！
+与迭代器自定义对话！
+定制平视显示器！
+结局 1/5
+Slugpup（尚未完全定制）
+享受！ 它在 Github 上！ 免费让你做任何事（只要遵循原始许可证等等）[github.com]
+	</p></div>
+			 <div class="lieBiaoXiang mgt8 baiSe yinYing"><img src="https://steamuserimages-a.akamaihd.net/ugc/2042987291563253393/921EB2C0FD66EF780E56CF4F09969D3C117FDED2
+/?imw=268&imh=151&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" width="700" height="270"></p>
+				</div> 
+			  <div class="lieBiaoXiang mgt8 baiSe yinYing">
+		  <p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2961854585&searchtext=The+Technomancer">英文名：The Technomancer</a></p>
+				<p>中文名：黑客猫</p>
+				  <p>在游戏中添加一个新的可玩弹头猫：Technomancer！
+有了随心所欲地操纵周围古老技术的能力，你会用它做什么？
+
+如果您想自己学习自己的能力，请不要看下面的剧透！
+快捷键 - X 锁定，Z 解锁
+钢鸟 - X 击晕/致盲
+秃鹫蛴螬 - X 激活
+秃鹫 - X 击晕和失火
+监察者 - X 击晕
+监视者 - X 杀死
+神经元/监视者之眼 - Z 引爆
+珍珠- X to detonate
+感谢您让我们登上首页！你们都喜欢我们的模组对我们来说意义重大，我希望你们会喜欢所有未来的更新！</p>
+		  </div> 
+		  <div class="lieBiaoXiang mgt8 baiSe yinYing">
+		  <img src="https://steamuserimages-a.akamaihd.net/ugc/2053122856406422300/FC6AE500630E5D1D37C790BBBDDBD04CB0404485/
+?imw=268&imh=151&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="Smiley face" width="700" height="270"></div>
+            <div class="lieBiaoXiang mgt8 baiSe yinYing">
+		  <p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2975130544&searchtext=The+Moonlight">英文名：The Moonlight</a></p>
+				<p>中文名：月光猫</p>
+				<p>总之是一只和某圆润之神一样重的美少蝓一枚
+你似乎与一位深居罐头中的大光头有着不解之缘。外貌奇异的你来自何方，又何去何从？
+
+
+</p>
+		  </div>
+			 <div class="lieBiaoXiang mgt8 baiSe yinYing">
+		  <img src="https://steamuserimages-a.akamaihd.net/ugc/2036243144985916762/F4C9C8CD9756351576EFBB851349311372CA171B
+/?imw=268&imh=151&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="Smiley face" width="700" height="270"></div> 
+		  <div class="lieBiaoXiang mgt8 baiSe yinYing">
+		 <p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3021014701&searchtext=The+Seeker">英文名：The Seeker</a></p>
+			  <p>中文名：探索者</p>
+			  <p>特殊食性
+除了能吃所有生存者能吃的食物，还可以消化绝大部分肚子里的物品（比如石头，鞭炮草和奇点炸弹）。
+根据物品的种类不同，提供的饱食度也不同。（简拉基茨德.jpg
+
+
+ 钩索
+除了外观上有所不同，这个能力与圣徒的舌头一致。
+
+ 珍珠阅读
+吞下珍珠来阅读其中的内容。吐出珍珠会立即结束读取。
+远程阅读：在见过五块卵石后，开始阅读珍珠前会出现一个简单的选择菜单。按下左右方向键来选择阅读者，之后按下跳跃键开始阅读。（所以快用白珍珠骚扰FP吧！（被弹脑瓜崩
+自身的珍珠阅读：追寻者自身即可阅读珍珠，但它的珍珠阅读内容几乎还是空白的（在写了在写了.jpg（目移
+
+ 珍珠探测
+当房间中存在彩色珍珠时，会自动出现一条指示线来引导你找到珍珠。
+如果房间中有多个彩色珍珠，你可以按下右Ctrl键来随机重新定位一颗彩色珍珠。白珍珠、五块卵石的珍珠和珍珠猫的初始珍珠不会被探测。
+
+耐久度和高伤害抗性
+金属躯壳赋予了追寻者较高的伤害抗性（除了对电击无效），代价是每次受到伤害都会削减躯壳的耐久度。
+ 你可以根据屏幕左侧的小型UI来大致判断当前剩余耐久度。目前仅会显示第一个使用Seeker的玩家的耐久度，以后会改进这个问题。
+ 躯壳拥有和巨构建筑极为相似的修复机制。每次雨眠都会重新回复所有耐久度。
+
+ 拓展设置页面
+你可以在此调整最大耐久度，以及一些……纯粹整活的外观设置！
+
+ 很抽象的打字聊天（100%雨世界语.jpg
+由于这个功能只做完了一半，目前暂不公开触发和使用方法……就当是个彩蛋吧（你</p></div>
+            <div class="lieBiaoXiang mgt8 baiSe yinYing">
+		  <img src="https://steamuserimages-a.akamaihd.net/ugc/2028360093090742489/8097CF8F9AD0CB169C71F4C6E411FDD4B4D3A2C2/
+?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"Smiley face" width="700" height="270"></div>
+		  <div class="lieBiaoXiang mgt8 baiSe yinYing">
+			    <p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3011187072&searchtext=Apple%27s+cat">英文名：Apple's cat</a></p>
+				<p><a href="https://github.com/AbyssLasea/Rainworld-The_Applecat">中文名：苹果猫</a></p>
+				<p>Applecat是蛞蝓猫的一种奇异变种，爱好和平，因为可以进行光合作用，已经放弃了像其他动物一样的捕猎和觅食。然而，它的旅程仍然非常危险。
+特征:Applecat 可以进行光合作用，只要头上没有物体且玩家位置明亮，它的饱和度就会自动恢复。它的身体颜色随着饱和度的增加而逐渐变化。
+Applecat 现在可以吐出一种叫做糖果的物体，这需要消耗饱和度。此外，如果玩家拿着物品，他们可以通过按住向上箭头键和拾取键来跳舞。
+
+-分割线-↑上半部分为下架前的简介
+
+这个mod被暂时遗弃了，之后我可能会将其重置，如果有bug请到我的github页面下面反馈，我会在重制版里面将其修复</p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
